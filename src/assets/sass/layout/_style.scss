@@ -1,0 +1,208 @@
+$layout-width-inner: 1260px;
+$main_color_font:rgba(0,0,0,0.87);
+
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+html {
+  font-family: YakuHanJP, Roboto, "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "Noto Sans Japanese", "Source Sans Pro", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", sans-serif;
+  color: $main_color_font;
+}
+
+#header {
+  width: 100%;
+  min-width: $layout-width-inner;
+  padding: 40px 0;
+  @include mq('tab') {
+    width: auto;
+    min-width: 0;
+    padding: 20px;
+  }
+  .header-area {
+    max-width: 1260px;
+    margin: 0 auto;
+    .head01 {
+      font-size: 40px;
+      @include mq('tab') {
+        font-size: 34px;
+        @include mq('sp') {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+#main {
+  max-width: $layout-width-inner;
+  margin: 50px auto;
+  @include mq('tab') {
+    margin: 30px auto;
+    padding: 0 20px;
+    @include mq('sp') {
+      padding: 0;
+    }
+  }
+  .main-area {
+    max-width: $layout-width-inner;
+    width: 100%;
+  }
+}
+
+.info-line {
+  margin: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list-index {
+  display: flex;
+  flex-wrap: wrap;
+  .list {
+    position: relative;
+    min-width: 265px;
+    width: 265px;
+    margin: 20px 5px auto;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    border: solid #ddd 1px;
+    color: gray;
+    @include mq('tab') {
+      margin: 30px auto auto;
+    }
+    &:nth-child(4n+1) {
+      margin-left: 0;
+      @include mq('tab') {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.addlist {
+  min-width: 250px;
+  width: 250px;
+  margin: 20px 5px auto;
+  @include mq('tab') {
+    min-width: 300px;
+    width: 300px;
+    margin: 50px auto auto;
+  }
+}
+
+.text-input {
+  padding: 20px 15px;
+  width: calc(100% - 30px);
+  background-color: #ccc;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #242424;
+  cursor: pointer;
+  overflow: overlay;
+}
+
+.text-input:focus {
+  outline: 0;
+  cursor: initial;
+}
+
+.add-button {
+  margin-top: 15px;
+  padding: 15px 18px;
+  background-color: #999;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.active .text-input {
+  background-color: #fff;
+}
+.addable .add-button {
+  background-color: #fccf49;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.add-button:active {
+  background-color: #fccf49;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-title {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: $main_color_font;
+}
+
+.list-counter {
+  padding: 25px 15px 15px 15px;
+  color: rgb(0, 140, 255);
+}
+
+.delete-list {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  font-size: 28px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.card {
+  display: flex;
+  position: relative;
+  width: 235px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 30px 15px 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-button {
+  position: absolute;
+  top: 6px;
+  right: 15px;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 8px;
+  border-color: red;
+  border-style: solid;
+  background-color: red;
+  color:#ffffff;
+  cursor: pointer;
+}
+
+.body {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
